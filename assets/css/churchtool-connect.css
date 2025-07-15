@@ -1,0 +1,14 @@
+
+.ctc-admin-wrapper input.form-control {
+    margin-bottom: 1rem;
+}
+
+.ctc-admin-wrapper .btn-primary {
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+}
+
+.ctc-admin-wrapper .form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
