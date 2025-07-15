@@ -1,0 +1,17 @@
+{
+    "name": "kai-naumann/churchtool-connect",
+    "description": "Ein WordPress-Plugin zur Synchronisation von ChurchTools-Events mit dem Modern Events Calendar.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Kai Naumann",
+            "email": "plugin@feg-aschaffenburg.de"
+        }
+    ],
+    "require": {
+        "5pm-hdh/churchtools-api": "^1.0",
+        "yahnis-elsts/plugin-update-checker": "^5.0",
+        "twbs/bootstrap": "^5.3"
+    }
+}
