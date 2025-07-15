@@ -1,38 +1,59 @@
-## Beschreibung
-Dieses Plugin importiert Events aus ChurchTools und integriert sie in den Modern Events Calendar (MEC).
+# 📦 ChurchTool Connect
 
-## Features
-- Synchronisation von Events aus ChurchTools mit MEC.
-- Unterstützung für benutzerdefinierte Cron-Jobs.
-- Einfache Konfiguration und Anpassung.
+Ein WordPress-Plugin zur Integration von ChurchTools-Daten in WordPress-Webseiten – ideal für Gemeinden, die ihre Veranstaltungen, Gruppen oder Benutzerinformationen direkt auf ihrer Website anzeigen möchten.
 
-## Voraussetzungen
-- **WordPress**: Version 5.8 oder höher.
-- **PHP**: Version 8 oder höher.
-- **Modern Events Calendar Lite**: Muss installiert und aktiviert sein.
+---
 
-## Installation
-1. Lade das Plugin-Verzeichnis in den Ordner `/wp-content/plugins/`.
-2. Aktiviere das Plugin im WordPress-Adminbereich unter `Plugins`.
-3. Navigiere zu **ChurchTools Event Importer for MEC** im Admin-Menü, um Einstellungen vorzunehmen.
+## 🔍 Projektübersicht
 
-## Verzeichnisse
-- **assets/**: Enthält statische Ressourcen wie CSS und JS.
-- **includes/**: Hauptlogik des Plugins.
-- **templates/**: HTML-Templates für Admin-Seiten.
+- **Name:** ChurchTool Connect  
+- **Version:** 1.0.0  
+- **Autor:** Kai Naumann  
+- **Lizenz:** GPL-2.0-or-later  
+- **Repository:** https://github.com/FEGAschaffenburg/churchtool-connect  
+- **Plugin URI:** https://plugin.feg-aschaffenburg.de  
+- **Autor URI:** mailto:plugin@feg-aschaffenburg.de  
 
-## Konfiguration
-- Gehe zu **Einstellungen** → **ChurchTools Event Importer** im WordPress-Dashboard.
-- Gib die API-Zugangsdaten für ChurchTools ein.
-- Wähle die Kalender aus, die synchronisiert werden sollen.
+---
 
-## Composer-Abhängigkeiten
-- `5pm-hdh/churchtools-api`
-- `yahnis-elsts/plugin-update-checker`
+## 🚀 Funktionen
 
+- Anzeige von ChurchTools-Inhalten (Veranstaltungen, Gruppen, Benutzer) via Shortcodes  
+- REST-API-Anbindung an ChurchTools  
+- Synchronisation mit dem Plugin *Modern Events Calendar*  
+- Einbindung von CSS/JS im WordPress-Adminbereich  
+- Aktivierungs- und Deaktivierungsroutinen  
 
-## Autor
-**FEG Aschaffenburg*
+---
 
-## Lizenz
-Dieses Plugin steht unter der GPL-2.0-Lizenz. Weitere Informationen findest du in der Datei `LICENSE`.
+## 🛠️ Installation
+
+1. Repository klonen oder ZIP-Datei herunterladen  
+2. In das WordPress-Plugin-Verzeichnis hochladen  
+3. Plugin im WordPress-Backend aktivieren  
+
+---
+
+## ⚙️ Technische Struktur
+
+churchtool-connect/ 
+├── assets/ 
+│ ├── css/ 
+│ │ └── churchtool-connect.css
+│ ├── js/
+│ │ └── churchtool-connect.js
+├── includes/
+│ ├── class-churchtool-connect.php
+│ ├── class-churchtool-connect-activate.php 
+│ ├── class-churchtool-connect-deactivate.php 
+│ ├── class-churchtool-connect-assets.php 
+│ ├── class-churchtool-connect-admin.php 
+│ └── class-churchtool-connect-constants.php 
+├── templates/ 
+├── vendor/ 
+├── churchtool-connect.php 
+├── composer.json 
+├── composer.lock 
+├── README.md 
+├── LICENSE 
+└── .gitignore

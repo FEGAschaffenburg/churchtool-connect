@@ -1,4 +1,6 @@
 <?php
+namespace ChurchtoolConnect;
+
 /**
  * Churchtool Connect - Asset Loader
  *

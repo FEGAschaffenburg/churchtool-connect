@@ -1,4 +1,6 @@
 <?php
+namespace ChurchtoolConnect;
+
 /**
  * Churchtool Connect - Konstanten
  *
@@ -14,4 +16,3 @@ class Churchtool_Connect_Constants {
         define('CTC_PLUGIN_VERSION', '1.0.0');
     }
 }
-?>

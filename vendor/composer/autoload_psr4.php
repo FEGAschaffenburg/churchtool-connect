@@ -14,5 +14,6 @@ return array(
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
+    'ChurchtoolConnect\\' => array($baseDir . '/includes'),
     'CTApi\\' => array($vendorDir . '/5pm-hdh/churchtools-api/src'),
 );

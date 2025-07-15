@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Plugin Name: Churchtool Connect
@@ -22,16 +23,10 @@ use ChurchtoolConnect\Churchtool_Connect_Initializer;
 use ChurchtoolConnect\Churchtool_Connect_Constants;
 use ChurchtoolConnect\Churchtool_Connect_Activate;
 use ChurchtoolConnect\Churchtool_Connect_Deactivate;
-use ChurchtoolConnect\Churchtool_Connect_Assets;
-use ChurchtoolConnect\Churchtool_Connect_API   ;
-   
 
 // Registriere Aktivierungs- und Deaktivierungs-Hooks
 register_activation_hook(__FILE__, array('ChurchtoolConnect\\Churchtool_Connect_Activate', 'run'));
 register_deactivation_hook(__FILE__, array('ChurchtoolConnect\\Churchtool_Connect_Deactivate', 'run'));
-
-// Registriere Asset Loader
-add_action('wp_enqueue_scripts', array('ChurchtoolConnect\\Churchtool_Connect_Assets', 'enqueue'));
 
 // Initialisiere das Plugin
 Churchtool_Connect_Initializer::init();

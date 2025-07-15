@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'kai-naumann/churchtool-connect',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'e2eb49272dae863d4f4e7e29d2ff3c9bfc954168',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -56,9 +56,9 @@
             'dev_requirement' => false,
         ),
         'kai-naumann/churchtool-connect' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'e2eb49272dae863d4f4e7e29d2ff3c9bfc954168',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
