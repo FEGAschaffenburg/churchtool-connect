@@ -32,7 +32,7 @@ Dieses Plugin importiert Events aus ChurchTools und integriert sie in den Modern
 
 
 ## Autor
-**Kai Naumann**
+**FEG Aschaffenburg*
 
 ## Lizenz
 Dieses Plugin steht unter der GPL-2.0-Lizenz. Weitere Informationen findest du in der Datei `LICENSE`.
