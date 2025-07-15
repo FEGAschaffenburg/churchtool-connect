@@ -14,22 +14,4 @@
 // Sicherheitsprüfung
 if (!defined('ABSPATH')) exit;
 
-// Konstanten definieren
-require_once plugin_dir_path(__FILE__) . 'includes/class-ctc-constants.php';
-Churchtool_Connect_Constants::define();
-
-// Abhängigkeiten laden
-require_once plugin_dir_path(__FILE__) . 'includes/class-ctc-loader.php';
-Churchtool_Connect_Loader::load();
-
-// Vendor-Bibliotheken laden
-require_once plugin_dir_path(__FILE__) . 'includes/class-ctc-vendor.php';
-Churchtool_Connect_Vendor::load();
-
-// Aktivierungslogik
-require_once plugin_dir_path(__FILE__) . 'includes/class-ctc-activator.php';
-register_activation_hook(__FILE__, ['Churchtool_Connect_Activator', 'activate']);
-
-// Plugin starten
-require_once plugin_dir_path(__FILE__) . 'includes/class-ctc-init.php';
-Churchtool_Connect_Init::run();
+require_once plugin_dir_path(__FILE__) . 'includes/class-churchtool-connect.php';
