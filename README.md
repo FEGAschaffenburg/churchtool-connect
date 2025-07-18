@@ -1,59 +1,58 @@
-# 📦 ChurchTool Connect
+# Churchtool Connect
 
-Ein WordPress-Plugin zur Integration von ChurchTools-Daten in WordPress-Webseiten – ideal für Gemeinden, die ihre Veranstaltungen, Gruppen oder Benutzerinformationen direkt auf ihrer Website anzeigen möchten.
-
----
-
-## 🔍 Projektübersicht
-
-- **Name:** ChurchTool Connect  
-- **Version:** 1.0.0  
-- **Autor:** Kai Naumann  
-- **Lizenz:** GPL-2.0-or-later  
-- **Repository:** https://github.com/FEGAschaffenburg/churchtool-connect  
-- **Plugin URI:** https://plugin.feg-aschaffenburg.de  
-- **Autor URI:** mailto:plugin@feg-aschaffenburg.de  
+**Churchtool Connect** ist ein WordPress-Plugin zur Integration von ChurchTools mit dem Modern Events Calendar. Es ermöglicht die Authentifizierung über die ChurchTools API und synchronisiert Benutzerdaten mit der WordPress-Installation.
 
 ---
 
-## 🚀 Funktionen
+## ✨ Features
 
-- Anzeige von ChurchTools-Inhalten (Veranstaltungen, Gruppen, Benutzer) via Shortcodes  
-- REST-API-Anbindung an ChurchTools  
-- Synchronisation mit dem Plugin *Modern Events Calendar*  
-- Einbindung von CSS/JS im WordPress-Adminbereich  
-- Aktivierungs- und Deaktivierungsroutinen  
+- Verbindung zur ChurchTools API (Login, Benutzerabfrage)
+- Speicherung von Benutzerdaten in WordPress
+- Admin-Oberfläche zur Konfiguration von API-Zugangsdaten
+- Anzeige gespeicherter Daten im Backend
+- Bootstrap-basiertes UI für Admin-Bereich
+- Unterstützung für Aktivierungs- und Deaktivierungsroutinen
 
 ---
 
 ## 🛠️ Installation
 
-1. Repository klonen oder ZIP-Datei herunterladen  
-2. In das WordPress-Plugin-Verzeichnis hochladen  
-3. Plugin im WordPress-Backend aktivieren  
+1. Plugin-Verzeichnis in `wp-content/plugins/churchtool-connect` kopieren
+2. Sicherstellen, dass `vendor/autoload.php` vorhanden ist (Composer-Abhängigkeiten)
+3. Plugin im WordPress-Backend aktivieren
 
 ---
 
-## ⚙️ Technische Struktur
+## ⚙️ Konfiguration
 
-churchtool-connect/ 
-├── assets/ 
-│ ├── css/ 
-│ │ └── churchtool-connect.css
-│ ├── js/
-│ │ └── churchtool-connect.js
-├── includes/
-│ ├── class-churchtool-connect.php
-│ ├── class-churchtool-connect-activate.php 
-│ ├── class-churchtool-connect-deactivate.php 
-│ ├── class-churchtool-connect-assets.php 
-│ ├── class-churchtool-connect-admin.php 
-│ └── class-churchtool-connect-constants.php 
-├── templates/ 
-├── vendor/ 
-├── churchtool-connect.php 
-├── composer.json 
-├── composer.lock 
-├── README.md 
-├── LICENSE 
-└── .gitignore
+1. Navigiere zu **Churchtool Connect** im WordPress-Admin-Menü
+2. Trage die API-URL, Benutzername und Passwort deiner ChurchTools-Instanz ein
+3. Speichere die Einstellungen
+4. Nach erfolgreichem Login werden Benutzerdaten automatisch geladen
+
+---
+
+## 📁 Verzeichnisstruktur
+
+- `churchtool-connect.php` – Hauptladepunkt des Plugins
+- `Churchtool_Connect_Initializer.php` – Initialisierung und Hook-Registrierung
+- `Churchtool_Connect_Activate.php` / `Deactivate.php` – Aktivierungs-/Deaktivierungslogik
+- `Churchtool_Connect_Admin.php` – Admin-Menü und Einstellungen
+- `Churchtool_Connect_API.php` – API-Kommunikation (Login, Benutzerdaten)
+- `Churchtool_Connect_Assets.php` – CSS/JS-Integration (Bootstrap, Custom)
+- `admin-page.php` / `database-page.php` – HTML-Templates für Admin-UI
+
+---
+
+## 📜 Lizenz
+
+GPL-2.0-or-later  
+https://www.gnu.org/licenses/gpl-2.0.html
+
+---
+
+## 👤 Autor
+
+**Kai Naumann**  
+plugin@feg-aschaffenburg.de  
+https://plugin.feg-aschaffenburg.de

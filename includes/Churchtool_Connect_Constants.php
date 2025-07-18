@@ -1,12 +1,5 @@
 <?php
 namespace ChurchtoolConnect;
-
-/**
- * Churchtool Connect - Konstanten
- *
- * @package Churchtool Connect
- */
-
 if (!defined('ABSPATH')) exit;
 
 class Churchtool_Connect_Constants {

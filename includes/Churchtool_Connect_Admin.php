@@ -1,5 +1,4 @@
 <?php
-
 namespace ChurchtoolConnect;
 
 if (!defined('ABSPATH')) exit;
@@ -7,108 +6,88 @@ if (!defined('ABSPATH')) exit;
 class Churchtool_Connect_Admin {
 
     public static function init() {
-        add_action('admin_menu', array(__CLASS__, 'add_menu'));
-        add_action('admin_init', array(__CLASS__, 'register_settings'));
+        add_action('admin_menu', [__CLASS__, 'add_menu']);
+        add_action('admin_init', [__CLASS__, 'register_settings']);
     }
 
     public static function add_menu() {
-        add_options_page(
-            'Churchtool Connect Einstellungen',
+        add_menu_page(
+            'Churchtool Connect',
             'Churchtool Connect',
             'manage_options',
             'churchtool-connect',
-            array(__CLASS__, 'render_admin_page')
+            [__CLASS__, 'render_page']
+        );
+
+        add_submenu_page(
+            'churchtool-connect',
+            'Churchtool Datenbank',
+            'Churchtool Datenbank',
+            'manage_options',
+            'churchtool-connect-database',
+            [__CLASS__, 'render_database_page']
         );
     }
 
     public static function register_settings() {
-        register_setting('churchtool-connect', 'churchtool_connect_settings', array(
-            'sanitize_callback' => array(__CLASS__, 'sanitize_settings')
-        ));
-
-        add_settings_section('ctc_main_section', 'API-Zugangsdaten', null, 'churchtool-connect');
-
-        add_settings_field('ctc_api_url', 'API-URL', function () {
-            $options = get_option('churchtool_connect_settings');
-            $value = esc_attr($options['api_url'] ?? '');
-            echo "<input type='text' name='churchtool_connect_settings[api_url]' value='$value' class='regular-text'>";
-        }, 'churchtool-connect', 'ctc_main_section');
-
-        add_settings_field('ctc_api_token', 'API-Token', function () {
-            $options = get_option('churchtool_connect_settings');
-            $value = esc_attr($options['api_token'] ?? '');
-            echo "<input type='text' name='churchtool_connect_settings[api_token]' value='$value' class='regular-text'>";
-        }, 'churchtool-connect', 'ctc_main_section');
-
-        add_settings_field('ctc_api_user', 'Benutzername', function () {
-            $options = get_option('churchtool_connect_settings');
-            $value = esc_attr($options['api_user'] ?? '');
-            echo "<input type='text' name='churchtool_connect_settings[api_user]' value='$value' class='regular-text'>";
-        }, 'churchtool-connect', 'ctc_main_section');
-
-        add_settings_field('ctc_api_password', 'Passwort', function () {
-            $options = get_option('churchtool_connect_settings');
-            $value = esc_attr($options['api_password'] ?? '');
-            echo "<input type='password' name='churchtool_connect_settings[api_password]' value='$value' class='regular-text'>";
-        }, 'churchtool-connect', 'ctc_main_section');
+        register_setting('churchtool_connect_settings_group', 'churchtool_connect_settings', [
+            'sanitize_callback' => [__CLASS__, 'sanitize_settings']
+        ]);
     }
 
     public static function sanitize_settings($input) {
-        $options = array_map('sanitize_text_field', $input);
-        update_option('churchtool_connect_settings', $options);
+        $input = array_map('sanitize_text_field', $input);
 
-        // POST-Login-Test mit JSON-Body
-        try {
-            $login_payload = array(
-                'username'    => $options['api_user'],
-                'password'    => $options['api_password'],
-                'rememberMe'  => false
-            );
+        $input['api_full_url'] = !empty($input['api_url'])
+            ? 'https://' . trim($input['api_url'], '/') . '.church.tools'
+            : '';
 
-            $result = \ChurchtoolConnect\Churchtool_Connect_API::post('auth/login', $login_payload);
-
-            if (is_wp_error($result)) {
-                add_settings_error('churchtool_connect_settings', 'api_error', 'Login fehlgeschlagen: ' . $result->get_error_message(), 'error');
-            } elseif (!is_array($result) || empty($result['token'])) {
-                add_settings_error('churchtool_connect_settings', 'api_invalid', 'Login fehlgeschlagen: Ungültige Antwort von der API.', 'error');
-            } else {
-                add_settings_error('churchtool_connect_settings', 'api_success', 'Login zur ChurchTools API erfolgreich.', 'updated');
-            }
-        } catch (\Throwable $e) {
-            add_settings_error('churchtool_connect_settings', 'api_exception', 'Fehler beim Login-Test: ' . $e->getMessage(), 'error');
+        if (!empty($input['api_token'])) {
+            $input['api_token'] = sanitize_text_field($input['api_token']);
         }
 
-        return $options;
+        if (!empty($input['api_user'])) {
+            $input['api_user'] = sanitize_text_field($input['api_user']);
+        }
+
+        if (!empty($input['api_password'])) {
+            $input['api_password'] = sanitize_text_field($input['api_password']);
+        }
+
+        // Automatischer Login nach dem Speichern
+        $result = \ChurchtoolConnect\Churchtool_Connect_API::login();
+
+        if (!is_wp_error($result) && isset($result['data']['token'])) {
+            $input['api_token'] = $result['data']['token'];
+            if (isset($result['data']['expires'])) {
+                $input['token_expires'] = strtotime($result['data']['expires']);
+            }
+        }
+
+        if (!is_wp_error($result)) {
+            \ChurchtoolConnect\Churchtool_Connect_API::fetchCurrentUser();
+        }
+
+        return $input;
     }
 
-    public static function render_admin_page() {
-        ?>
-        <div class="wrap">
-            <h1>Churchtool Connect – Einstellungen</h1>
-            <?php settings_errors('churchtool_connect_settings'); ?>
-            <form method="post" action="options.php">
-                <?php
-                settings_fields('churchtool-connect');
-                do_settings_sections('churchtool-connect');
-                submit_button();
-                ?>
-            </form>
-        </div>
-        <?php
+    public static function render_page() {
+        $churchtool_connect_settings = get_option('churchtool_connect_settings');
+        $login_status = isset(
+            $churchtool_connect_settings['api_url'],
+            $churchtool_connect_settings['api_user'],
+            $churchtool_connect_settings['api_password']
+        ) && $churchtool_connect_settings['api_url'] && $churchtool_connect_settings['api_user'] && $churchtool_connect_settings['api_password']
+            ? '✅ Zugangsdaten vorhanden'
+            : '❌ Zugangsdaten unvollständig';
+
+        include dirname(__FILE__) . '/../templates/admin-page.php';
+    }
+
+    public static function render_database_page() {
+        $settings = get_option('churchtool_connect_settings');
+        include dirname(__FILE__) . '/../templates/database-page.php';
     }
 }
 
-// Initialisierung beim Laden des Admin-Bereichs
-add_action('plugins_loaded', array('ChurchtoolConnect\\Churchtool_Connect_Admin', 'init'));
-
-// Standardoptionen beim Aktivieren des Plugins setzen
-register_activation_hook(__FILE__, function () {
-    if (false === get_option('churchtool_connect_settings')) {
-        add_option('churchtool_connect_settings', array(
-            'api_url'      => '',
-            'api_token'    => '',
-            'api_user'     => '',
-            'api_password' => ''
-        ));
-    }
-});
+Churchtool_Connect_Admin::init();

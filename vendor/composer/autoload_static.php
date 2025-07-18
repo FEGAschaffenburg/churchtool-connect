@@ -4,84 +4,24 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2503d0b40117ec564418740c6f7655fa
+class ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b
 {
-    public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'f6d4f6bcee7247df6b777884c3e22f98' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p6.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'Psr\\Log\\' => 8,
-            'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
-        ),
-        'M' => 
-        array (
-            'Monolog\\' => 8,
-        ),
-        'G' => 
-        array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
-        ),
-        'D' => 
-        array (
-            'Doctrine\\Common\\Cache\\' => 22,
-        ),
         'C' => 
         array (
+            'Composer\\Installers\\' => 20,
             'ChurchtoolConnect\\' => 18,
-            'CTApi\\' => 6,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Psr\\Log\\' => 
+        'Composer\\Installers\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/src',
-        ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
-        ),
-        'Monolog\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
-        ),
-        'GuzzleHttp\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
-        ),
-        'Doctrine\\Common\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
         'ChurchtoolConnect\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
-        ),
-        'CTApi\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/5pm-hdh/churchtools-api/src',
         ),
     );
 
@@ -92,9 +32,9 @@ class ComposerStaticInit2503d0b40117ec564418740c6f7655fa
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2503d0b40117ec564418740c6f7655fa::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2503d0b40117ec564418740c6f7655fa::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2503d0b40117ec564418740c6f7655fa::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$classMap;
 
         }, null, ClassLoader::class);
     }

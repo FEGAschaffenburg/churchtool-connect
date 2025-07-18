@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-        "5pm-hdh/churchtools-api": "^1.0",
-        "yahnis-elsts/plugin-update-checker": "^5.0",
+        "php": ">=7.4",
         "twbs/bootstrap": "^5.3"
     },
     
@@ -19,6 +18,10 @@
     "psr-4": {
         "ChurchtoolConnect\\": "includes/"
      }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": false
+        }
     }
-
- }
+}
