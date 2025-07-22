@@ -34,15 +34,29 @@
 
 ## 📁 Verzeichnisstruktur
 
-- `churchtool-connect.php` – Hauptladepunkt des Plugins
-- `Churchtool_Connect_Initializer.php` – Initialisierung und Hook-Registrierung
-- `Churchtool_Connect_Activate.php` / `Deactivate.php` – Aktivierungs-/Deaktivierungslogik
-- `Churchtool_Connect_Admin.php` – Admin-Menü und Einstellungen
-- `Churchtool_Connect_API.php` – API-Kommunikation (Login, Benutzerdaten)
-- `Churchtool_Connect_Assets.php` – CSS/JS-Integration (Bootstrap, Custom)
-- `admin-page.php` / `database-page.php` – HTML-Templates für Admin-UI
-
----
+churchtool-connect/
+├── churchtool-connect.php
+├── README.md
+├── includes/
+│   ├── Churchtool_Connect_Activate.php
+│   ├── Churchtool_Connect_API.php
+│   ├── Churchtool_Connect_Assets.php
+│   ├── Churchtool_Connect_Calendar.php
+│   ├── Churchtool_Connect_Config.php
+│   ├── Churchtool_Connect_Constants.php
+│   ├── Churchtool_Connect_Cron.php
+│   ├── Churchtool_Connect_Deactivate.php
+│   ├── Churchtool_Connect_Debug.php
+│   └── Churchtool_Connect_Initializer.php
+├── templates/
+│   ├── calendar-overview.php
+│   ├── config-page.php
+│   └── debug-page.php
+├── assets/
+│   ├── css/
+│   │   └── churchtool-connect.css
+│   └── js/
+│       └── churchtool-connect.js
 
 ## 📜 Lizenz
 

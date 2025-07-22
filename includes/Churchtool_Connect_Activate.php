@@ -11,8 +11,17 @@ class Churchtool_Connect_Activate {
                 'api_token' => '',
                 'api_user' => '',
                 'api_password' => '',
-                'api_full_url' => ''
+                'api_full_url' => '',
+                'session_cookies'   => array(),
+                'session_cookies_timestamp' => '',
+                'user_data' => array(), 
             ));
         }
+
+        
+        add_option('churchtool_connect_login_info', []);
+        add_option('churchtool_connect_session_cookies', []);
+        add_option('churchtool_connect_user_info', []);
+        add_option('churchtool_connect_calender', []);
     }
 }

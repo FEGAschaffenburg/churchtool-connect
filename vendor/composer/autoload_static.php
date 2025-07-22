@@ -4,21 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b
+class ComposerStaticInit91c6458ceed9ab0e5c8046645fe4147e
 {
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
-            'Composer\\Installers\\' => 20,
             'ChurchtoolConnect\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Composer\\Installers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
-        ),
         'ChurchtoolConnect\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
@@ -32,9 +27,9 @@ class ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8867dc6c697b54bbeb98329c80d7c48b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit91c6458ceed9ab0e5c8046645fe4147e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit91c6458ceed9ab0e5c8046645fe4147e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit91c6458ceed9ab0e5c8046645fe4147e::$classMap;
 
         }, null, ClassLoader::class);
     }

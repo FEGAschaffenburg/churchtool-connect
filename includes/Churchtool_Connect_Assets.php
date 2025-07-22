@@ -1,6 +1,6 @@
-<?php
-namespace ChurchtoolConnect;
-if (!defined('ABSPATH')) exit;
+<?php 
+namespace ChurchtoolConnect; 
+if (!defined('ABSPATH')) exit; 
 
 class Churchtool_Connect_Assets {
     public static function enqueue() {
